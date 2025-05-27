@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>輸入搜尋關鍵字</title>
+</head>
+<body>
+  <h2>Kindle 中文搜尋</h2>
+  <form onsubmit="saveFile(); return false;">
+    <label for="query">請輸入搜尋關鍵字：</label><br>
+    <input type="text" id="query" name="query" style="width:95%; font-size:1.5em;"><br><br>
+    <input type="submit" value="儲存搜尋文字 (Save)">
+  </form>
+
+  <script>
+    function saveFile() {
+      var text = document.getElementById("query").value;
+      var blob = new Blob([text], { type: "text/plain" });
+      var a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "query.txt";
+      a.click();
+    }
+  </script>
+</body>
+</html>
